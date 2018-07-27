@@ -14,7 +14,11 @@ Rails.application.routes.draw do
     resources :replies, only: [:index, :create]
   end
 
-  resources :users, only: [:edit, :update]
-
   root "tweets#index"
+
+  resources :users, only: [:edit, :update] do
+    member do
+      get :tweets
+    end
+  end
 end
