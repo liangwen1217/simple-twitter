@@ -10,21 +10,22 @@ class TweetsController < ApplicationController
   def create
     @tweet = current_user.tweetsbuild(tweet_params)
     if @tweet.save
-      redirect_to root_path
+      redirect_to tweets_path
     else
       flash[:alert] = @tweet.errors.full_message.to_sentence
-      @tweets = Tweet.all.order(created_at: :desc)
-      render :index
+      redirect_to tweets_path
     end
   end
 
   def like
-    @like = Like.where(user: current_user, tweet: @tweet).first
-    @like.destroy
-    redirect_back fallback_location: root_path
+    @tweet.likes.create!(user: current_user)
+    redirect_to tweets_path
   end
 
   def unlike
+    @like = Like.where(user: current_user, tweet: @tweet).first
+    @like.destroy
+    redirect_to tweets_path
   end
 
   private
