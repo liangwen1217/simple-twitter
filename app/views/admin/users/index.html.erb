@@ -1,0 +1,23 @@
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Tweets</th>
+      <th>Followings</th>
+      <th>Followers</th>
+      <th>Likes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= user.name %></td>
+      <td><%= user.followings.count %></td>
+      <td><%= user.Followers_count %></td>
+      <td><%= user.likes_count %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
