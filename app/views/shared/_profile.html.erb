@@ -14,7 +14,7 @@
     <% if user == current_user %>
       <%= link_to "Edit Profile", user_path(user) %>
     <% else %>
-      <%= render partition: "shared/follow", locals: {user: user} %>
+      <%= render partition: "shared/follo_btn", locals: {user: user} %>
     <% end %>
   </div>
 </div>
