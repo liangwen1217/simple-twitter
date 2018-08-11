@@ -10,7 +10,7 @@ class TweetsController < ApplicationController
   def create
     @tweet = current_user.tweetsbuild(tweet_params)
     if @tweet.save
-      redirect_to tweets_path
+      #redirect_to tweets_path
     else
       flash[:alert] = @tweet.errors.full_message.to_sentence
       redirect_to tweets_path
@@ -19,7 +19,7 @@ class TweetsController < ApplicationController
 
   def like
     @tweet.likes.create!(user: current_user)
-    redirect_to tweets_path
+    #redirect_to tweets_path
   end
 
   def unlike
