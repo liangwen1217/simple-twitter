@@ -9,16 +9,18 @@
     </div>
     <div class="col-md-12">
       <h2>Replies</h2>
+      <div class="replies">
       <% @replies.each do |reply| %>
         <%= render partial: "shared/reply", locals: { reply: reply, msg_content: reply.comment, msg_btn: false } %>
       <% end %>
     </div>
-    <%= form_for [@tweet, @reply] do |f| %>
+  </div>
+    <%= form_for [@tweet, @reply, remote: true do |f| %>
       <div class="form-group">
         <%= f.text_area :comment, class: "form-control tex-area" %>
       </div>
       <div class="form-group pull-right">
-        <%= f.sumbit "Reply", :disable_with => 'Replying...', class: "btn btn-default my-btn"%>
+        <%= f.sumbit "Reply", :disable_with => 'Replying...',  remote: true, class: "btn btn-default my-btn"%>
       </div>
     <% end %>
   </div>
