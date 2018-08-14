@@ -86,3 +86,9 @@ textarea.text-area {
   font-size: 2.5em;
   color:lightblue;
 }
+
+}
+
+div.inline {
+  display: inline-block;
+}
