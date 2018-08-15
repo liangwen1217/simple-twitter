@@ -47,35 +47,25 @@ namespace :dev do
   end
 
   task fake_follow: :environment do
-    Followship.destroy_all
-    User.all each do |user|
+     500.times do
+        user = User.all.sample
+        tweet = Tweet.all.sample
+        unless tweet.likes.create(user: user)
+          return
+        end
+      end
+      puts"create fake likes"
+    end
 
-      rand(20).times do |i|
-        user.followships.create(following_id: 2+1)
+      User.all.each do |user|
+      followings = User.all.sample(rand(1..20))
+      if followings.include?(user)
+        followings.delete(user)
+      end
+      for following in followings
+        user.followships.create!(following: following)
       end
     end
     puts "create fake_follow"
   end
-
-  500.times do
-    user = User.all.sample
-    tweet = Tweet.all.sample
-    unless tweet.likes.create(user: user)
-      return
-    end
-  end
-  puts"create fake likes"
-end
-  Followship.destroy_all
-
-  User.all.each do |user|
-    if followings.include?(user)
-      followings.delete(user)
-    end
-    for following in followings
-      user.followships.create!(following: following)
-    end
-  end
-  puts "create fake_follow"
-end
 end
