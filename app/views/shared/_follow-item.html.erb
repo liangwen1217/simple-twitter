@@ -4,6 +4,6 @@
   </div>
   <div class="col-md-8">
     <%= link_to user.name, tweets_user_path(user) %><br/>
-    <%= user.introduction %>
+    <%= truncate user.introduction, length: 80 %>
   </div>
 </div>

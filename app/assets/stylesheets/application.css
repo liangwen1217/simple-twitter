@@ -32,6 +32,13 @@ nav.navbar {
   padding: 10px;
   margin-top: 15px;
 }
+
+.follow-item{
+  border: 2px solid lightgray;
+  padding:10px;
+  margin-bottom: 15px; 
+}
+
 .my-btn {
   background-color: #71a6d0;
 }
